@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { fetchPhotos } from "../helpers/unsplash-api";
+import { fetchPhotos } from "../../helpers/unsplash-api";
 import { SearchBar } from "../SearchBar/SearchBar";
 import Loader from "../Loader/Loader";
 import ImageGallery from "../ImageGallery/ImageGallery";
