@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import css from "./ImageModal.module.css";
 
 export default function ImageModal({ isOpen, onClose, image }) {
   const customStyles = {
@@ -16,7 +17,7 @@ export default function ImageModal({ isOpen, onClose, image }) {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
-      <img src={image.urls.regular} />
+      <img src={image.urls.regular} className={css.img} />
     </Modal>
   );
 }
