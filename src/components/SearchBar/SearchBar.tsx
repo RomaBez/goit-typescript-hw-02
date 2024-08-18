@@ -24,7 +24,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const formValue = (form.elements.search as HTMLInputElement).value.trim();
+    const formValue: string = (
+      form.elements.namedItem("search") as HTMLInputElement
+    ).value.trim();
     if (formValue === "") {
       valueError();
       return;
