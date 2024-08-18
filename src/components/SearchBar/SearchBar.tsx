@@ -2,8 +2,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { CiSearch } from "react-icons/ci";
 import css from "./SearchBar.module.css";
 
-export const SearchBar = ({ onSearch }) => {
-  const valueError = () =>
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const valueError = (): string =>
     toast.error("Please enter your query.", {
       duration: 2500,
       style: {
@@ -16,16 +20,16 @@ export const SearchBar = ({ onSearch }) => {
       },
     });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
-    const formValue = form.elements.search.value;
+    const form = e.target as HTMLFormElement;
+    const formValue = form.elements.search.value.trim();
     if (formValue === "") {
       valueError();
       return;
     }
     onSearch(formValue);
-    form.reset(); // Виправлено на form.reset
+    form.reset();
   };
 
   return (

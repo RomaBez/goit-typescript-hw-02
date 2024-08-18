@@ -1,7 +1,21 @@
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 
-export default function ImageModal({ isOpen, onClose, image }) {
+interface ImageModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  image: {
+    urls: {
+      regular: string;
+    };
+  };
+}
+
+export default function ImageModal({
+  isOpen,
+  onClose,
+  image,
+}): ImageModalProps {
   const customStyles = {
     content: {
       top: "50%",

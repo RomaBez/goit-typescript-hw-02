@@ -1,6 +1,13 @@
+import React from "react";
+import { Photo } from "../../helpers/unsplash-api";
 import css from "./ImageCard.module.css";
 
-const ImageCard = ({ image, openModal }) => {
+interface ImageProps {
+  image: Photo;
+  openModal: (image: Photo) => void;
+}
+
+const ImageCard: React.FC<ImageProps> = ({ image, openModal }) => {
   const handleClick = () => {
     openModal(image);
   };

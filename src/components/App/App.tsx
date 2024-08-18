@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Photo } from "../../helpers/unsplash-api";
 import Modal from "react-modal";
 import { fetchPhotos } from "../../helpers/unsplash-api";
 import { SearchBar } from "../SearchBar/SearchBar";
@@ -9,13 +10,13 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../ImageModal/ImageModal";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [photos, setPhotos] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState(false);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [loader, setLoader] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [page, setPage] = useState(1);
-  const [image, setImage] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
+  const [image, setImage] = useState<Photo | null>(null);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (!inputValue) return;
@@ -37,7 +38,7 @@ function App() {
     fetchImg();
   }, [inputValue, page]);
 
-  const handleGetImage = (newValue) => {
+  const handleGetImage = (newValue: string) => {
     setPhotos([]);
     setPage(1);
     setInputValue(newValue);
@@ -47,7 +48,7 @@ function App() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const handleOpenModal = (img) => {
+  const handleOpenModal = (img: Photo) => {
     setImage(img);
     setOpenModal(true);
   };

@@ -1,7 +1,8 @@
+import { ReactElement } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import css from "./Loader.module.css";
 
-export default function Loader() {
+export default function Loader(): ReactElement {
   return (
     <div className={css.loader}>
       <RotatingLines
