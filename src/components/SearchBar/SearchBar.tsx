@@ -1,3 +1,4 @@
+import React, { FormEvent } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { CiSearch } from "react-icons/ci";
 import css from "./SearchBar.module.css";
@@ -20,10 +21,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       },
     });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const formValue = form.elements.search.value.trim();
+    const formValue = (form.elements.search as HTMLInputElement).value.trim();
     if (formValue === "") {
       valueError();
       return;
